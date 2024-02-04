@@ -1,8 +1,12 @@
 # y360-users-move
 
+Ограничения по использованию:  
+Не более 1000 пользователей в организации.  
+Синхронизация групп возможна только если нет вложенных. С вложенными группами не тестировалось.  
+
 ### users_create_list.sh
-Выгружает список пользователей из организации и подготавливает для загрузки в другую.  
-Токен приложения. Требуются права directory:read_users 
+Выгружает список пользователей и список групп из организации и подготавливает для загрузки в другую.  
+Токен приложения. Требуются права directory:read_users directory:read_groups 
 ```
 token="xxx"
 ```
@@ -17,14 +21,17 @@ password="xxx"
 
 
 ### users_create_from_list.sh
-Создает пользователей из выгруженного ранее списка в другой организации.  
+Создает пользователей и группы из выгруженного ранее списка в другой организации.  
 Опционально возможно создание правила переадресации внутри домена.  
   
 Токен приложения. Требуются права  
 directory:read_users   
-directory:write_users  
-ya360_admin:mail_write_routing_rules  
-ya360_admin:mail_read_routing_rules 
+directory:write_users   
+directory:read_groups   
+directory:write_groups   
+опционально:  
+ya360_admin:mail_write_routing_rules   
+ya360_admin:mail_read_routing_rules  
 ```
 token="xxx"
 ```
